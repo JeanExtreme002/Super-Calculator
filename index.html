@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="author" content="Jean Loui Bernard Silva de Jesus"/>
+        <title>Super Calculadora</title>
+
+        <link rel="stylesheet" type="text/css" href="./style/style.css"/>
+        <script type="text/javascript" src="./scripts/bhaskara_calc.js"></script>
+        <script type="text/javascript" src="./scripts/combinatorial_calc.js"></script>
+        <script type="text/javascript" src="./scripts/progression_calc.js"></script>
+        <script type="text/javascript" src="./scripts/rect_triangle_calc.js"></script>
+        <script type="text/javascript" src="./scripts/util.js"></script>
+        <script type="text/javascript" src="./scripts/btn_func.js"></script>
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </head>
+
+    <body style="margin: 50px;">
+
+        <!-- Guia -->
+
+        <h3>Guia:</h3>
+
+        <ul>
+            <li>
+                <a href="#mult">
+                    Realize uma operação de multiplicação obtendo todo o processo até chegar ao resultado
+                </a>
+            </li>
+            <li>
+                <a href="#delta">
+                    Obtenha o Delta da fórmula de Bhaskara
+                </a>
+            </li>
+            <li>
+                <a href="#bhaskara">
+                    Calcule uma equação completa do 2º grau utilizando a fórmula de Bhaskara
+                </a>
+            </li>
+            <li>
+                <a href="#progression">
+                    Ache o valor de An e a soma de seus termos com PA e PG
+                </a>
+            </li>
+            <li>
+                <a href="#arrangement">
+                    Calcule todas as possibilidades para agrupar n elementos com Arranjos Simples
+                </a>
+            </li>
+            <li>
+                <a href="#arrangement">
+                    Calcule todas as combinações possíveis com Combinações Simples
+                </a>
+            </li>
+            <li>
+                <a href="#rect_triangle">
+                    Obtenha a hipotenusa, catetos, altura e muito mais de um Triângulo Retângulo
+                </a>
+            </li>
+            <li>
+                <a href="#rad_to_degrees">
+                    Converta um valor de radianos para graus
+                </a>
+            </li>
+        </ul>
+
+
+        <br><hr><br>
+
+        <!-- Cálculo de multiplicação -->
+
+        <h2 id="mult">Calcule uma operação de multiplicação:</h2>
+
+        <input id="mult_x" type="number" max="999999999" placeholder="Valor X"/>
+        <input id="mult_y" type="number" max="999999999" placeholder="Valor Y"/>
+        <button onclick="calcMultiplication();">Calcular</button>
+
+        <details id="mult_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div align="right" style = "min-width: 0px; max-width: 400px; overflow:auto;">
+                <div class="calc" id="mult_calc"></div>
+            </div>
+        </details>
+
+        <div class="alert alert-danger" id="mult_msg" hidden></div>
+
+        <hr/>
+
+        <!-- Cálculo para Delta -->
+
+        <h2 id="delta">Calcular Delta:</h2>
+
+        <input id="d_a" type="number" placeholder="Valor A"/>
+        <input id="d_b" type="number" placeholder="Valor B"/>
+        <input id="d_c" type="number" placeholder="Valor C"/>
+        <button onclick="calcDelta();">Calcular</button>
+
+        <details id="delta_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div class="calc" id="delta_calc"></div>
+        </details>
+
+        <div class="alert alert-danger" id="delta_msg" hidden></div>
+
+        <hr/>
+
+        <!-- Cálculo para Bhaskara -->
+
+        <h2 id="bhaskara">Calcular Bhaskara:</h2>
+
+        <input id="b_a" type="number" placeholder="Valor A"/>
+        <input id="b_b" type="number" placeholder="Valor B"/>
+        <input id="b_c" type="number" placeholder="Valor C"/>
+        <button onclick="calcBhaskara();">Calcular</button>
+
+        <details id="bhaskara_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div class="calc" id="bhaskara_calc"></div>
+        </details>
+
+        <div class="alert alert-danger" id="bhaskara_msg" hidden></div>
+
+        <hr/>
+
+        <!-- Cálculo para PA e PG -->
+
+        <h2 id="progression">Calcular Progressão (PA e PG):</h2>
+
+        <input id="pg_a1" type="number" placeholder="Primeiro Termo"/>
+        <input id="pg_n" type="number" placeholder="Número de Termos"/>
+        <input id="pg_q" type="number" placeholder="Razão"/>
+        <button onclick="calcProgression();">Calcular</button>
+
+        <details id="progression_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div class="calc" id="pa_an_calc"></div>
+            <div class="calc" id="pa_sn_calc"></div>
+            <div class="calc" id="pg_an_calc"></div>
+            <div class="calc" id="pg_sn_calc"></div>
+        </details>
+
+        <div class="alert alert-danger" id="pg_msg" hidden></div>
+
+        <hr/>
+
+        <!-- Calcular arranjos simples -->
+
+        <h2 id="arrangement">Calcular Arranjos Simples:</h2>
+
+        <input id="a_n" type="number" placeholder="Total de Elementos"/>
+        <input id="a_r" type="number" placeholder="Elem. por Arranjo"/>
+        <button onclick="calcArrangement();">Calcular</button>
+
+        <details id="arrangement_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div class="calc" id="arrangement_calc"></div>
+        </details>
+
+        <div class="alert alert-danger" id="arrangement_msg" hidden></div>
+
+        <hr/>
+
+        <!-- Calcular combinações simples -->
+
+        <h2 id="combination">Calcular Combinações Simples:</h2>
+
+        <input id="c_n" type="number" placeholder="Total de Elementos"/>
+        <input id="c_r" type="number" placeholder="Elem. por Subconjunto"/>
+        <button onclick="calcCombination();">Calcular</button>
+
+        <details id="combination_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div class="calc" id="combination_calc"></div>
+        </details>
+
+        <div class="alert alert-danger" id="combination_msg" hidden></div>
+
+        <hr/>
+
+        <!-- Cálculo para Triângulo Retângulo -->
+
+        <h2 id="rect_triangle">Calcular Triângulo Retângulo:</h2>
+
+        <input id="t_a" type="number" placeholder="Hipotenusa"/>
+        <input id="t_b" type="number" placeholder="Cateto B"/>
+        <input id="t_c" type="number" placeholder="Cateto C"/>
+        <button onclick="calcTriangle();">Calcular</button>
+
+        <details id="triangle_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div class="calc" id="triangle_leg_calc"></div>
+            <div class="calc" id="triangle_height_calc"></div>
+            <div class="calc" id="triangle_pb_calc"></div>
+            <div class="calc" id="triangle_pc_calc"></div>
+        </details>
+
+        <div class="alert alert-danger" id="triangle_msg" hidden></div>
+
+        <hr>
+
+        <!-- Conversão de radianos para graus-->
+
+        <h2 id="rad_to_degrees">Converter Radianos para Graus:</h2>
+
+        <input id="radians" type="number" placeholder="Radianos"/>
+        <button onclick="calcRadiansToDegrees();">Calcular</button>
+
+        <details id="rad_to_degrees_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div class="calc" id="rad_to_degrees_calc"></div>
+        </details>
+
+        <div class="alert alert-danger" id="rad_to_degrees_msg" hidden></div>
+    </body>
+</html>

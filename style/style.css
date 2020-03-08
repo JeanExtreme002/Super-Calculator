@@ -1,0 +1,22 @@
+h2{
+    font-family: Arial;
+}
+
+h3{
+    font-family: Arial;
+    font-size: 30px;
+}
+
+li{
+    font-size: 20px;
+}
+
+.calc_area{
+    font-family: Arial;
+    font-size: 18px;
+    margin: 20px 0px 20px 0px;
+}
+
+.calc{
+    margin: 0px 100px 50px 0px;
+}
