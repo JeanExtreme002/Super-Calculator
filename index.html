@@ -52,7 +52,7 @@
                 </a>
             </li>
             <li>
-                <a href="#arrangement">
+                <a href="#combination">
                     Calcule todas as combinações possíveis com Combinações Simples
                 </a>
             </li>
@@ -64,6 +64,11 @@
             <li>
                 <a href="#rad_to_degrees">
                     Converta um valor de radianos para graus
+                </a>
+            </li>
+            <li>
+                <a href="#deg_to_tri">
+                    Obtenha as razões trigonométricas a partir de um ângulo
                 </a>
             </li>
         </ul>
@@ -213,7 +218,7 @@
 
         <h2 id="rad_to_degrees">Converter Radianos para Graus:</h2>
 
-        <input id="radians" type="number" placeholder="Radianos"/>
+        <input id="r2d_radians" type="number" placeholder="Radianos"/>
         <button onclick="calcRadiansToDegrees();">Calcular</button>
 
         <details id="rad_to_degrees_result" class="calc_area">
@@ -223,5 +228,19 @@
         </details>
 
         <div class="alert alert-danger" id="rad_to_degrees_msg" hidden></div>
+
+        <h2 id="deg_to_tri">Obter Razões Trigonométricas:</h2>
+        <input id="d2t_degrees" type="number" min="0" max="90" placeholder="Ângulo (Graus)" />
+        <button onclick="getTrigonometry();">Obter</button>
+
+        <details id="deg_to_tri_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div class="calc" id="deg_to_tri_sin"></div>
+            <div class="calc" id="deg_to_tri_cos"></div>
+            <div class="calc" id="deg_to_tri_tan"></div>
+        </details>
+
+        <div class="alert alert-danger" id="deg_to_tri_msg" hidden></div>   
     </body>
 </html>

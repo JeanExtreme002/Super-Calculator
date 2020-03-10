@@ -5,8 +5,8 @@ Funções dos botões.
 function calcArrangement(){
 
     // Obtém os valores N e R
-    const n = parseInt(document.getElementById("a_n").value);
-    const r = parseInt(document.getElementById("a_r").value);
+    var n = document.getElementById("a_n").value;
+    var r = document.getElementById("a_r").value;
 
     // Abre o <details> e obtém as div's para inserir os resultados.
     document.getElementById("arrangement_result").open = true;
@@ -16,7 +16,9 @@ function calcArrangement(){
     arrangement.innerHTML = "Quantidade de agrupamentos possíveis:<br><br>";
 
     // Verifica se todos os campos foram preenchidos.
-    if (n && r){
+    if (n !== "" && r !== ""){
+        n = parseInt(n);
+        r = parseInt(r);
         arrangement.innerHTML += getArrangement(n, r)[0];
         msg.hidden = true;
 
@@ -32,8 +34,8 @@ function calcArrangement(){
 function calcCombination(){
 
     // Obtém os valores N e R
-    const n = parseInt(document.getElementById("c_n").value);
-    const r = parseInt(document.getElementById("c_r").value);
+    var n = document.getElementById("c_n").value;
+    var r = document.getElementById("c_r").value;
 
     // Abre o <details> e obtém as div's para inserir os resultados.
     document.getElementById("combination_result").open = true;
@@ -43,7 +45,9 @@ function calcCombination(){
     combination.innerHTML = "Quantidade de combinações possíveis:<br><br>";
 
     // Verifica se todos os campos foram preenchidos.
-    if (n && r){
+    if (n !== "" && r !== ""){
+        n = parseInt(n);
+        r = parseInt(r);
         combination.innerHTML += getCombination(n, r)[0];
         msg.hidden = true;
 
@@ -124,8 +128,9 @@ function calcMultiplication(){
     const msg = document.getElementById("mult_msg");
 
     // Verifica se todos os campos foram preenchidos.
-    if (x && y){
-        mult.innerHTML = getMult(x, y)[0];
+    if (x !== "" && y !== ""){
+
+        mult.innerHTML = getMult(x, y)[0];  // AVISO: Os valores de X e Y devem ser strings obrigatoriamente.
         msg.hidden = true;
 
     }else{
@@ -140,9 +145,9 @@ function calcMultiplication(){
 function calcProgression(){
 
     // Obtém o primeiro termo, número de termos e razão.
-    const a1 = parseFloat(document.getElementById("pg_a1").value);
-    const n = parseFloat(document.getElementById("pg_n").value);
-    const q = parseFloat(document.getElementById("pg_q").value);
+    var a1 = document.getElementById("pg_a1").value;
+    var n = document.getElementById("pg_n").value;
+    var q = document.getElementById("pg_q").value;
 
     // Abre o <details> e obtém as div's para inserir os resultados.
     document.getElementById("progression_result").open = true;
@@ -159,7 +164,12 @@ function calcProgression(){
 
 
     // Verifica se todos os campos foram preenchidos.
-    if (a1 && n && q){
+    if (a1 !== "" && n !== "" && q !== ""){
+
+        a1 = parseFloat(a1);
+        n = parseFloat(n);
+        q = parseFloat(q);
+
         pa_an.innerHTML += getAnFromPA(a1, n, q)[0];
         pa_sn.innerHTML += getSnFromPA(a1, n, q)[0];
         pg_an.innerHTML += getAnFromPG(a1, n, q)[0];
@@ -181,7 +191,7 @@ function calcProgression(){
 function calcRadiansToDegrees(){
 
     // Obtém o valor em radianos
-    var value = parseFloat(document.getElementById("radians").value);
+    var value = document.getElementById("r2d_radians").value;
 
     // Abre o <details> e obtém as div's para inserir os resultados.
     document.getElementById("rad_to_degrees_result").open = true;
@@ -190,11 +200,13 @@ function calcRadiansToDegrees(){
 
     degrees.innerHTML = "Graus:<br><br>";
 
-    if (value){
+    if (value !== ""){
+        value = parseFloat(value)
         msg.hidden = true;
         degrees.innerHTML += radiansToDegrees(value)[0];
 
     }else{
+        document.getElementById("rad_to_degrees_result").open = false;
         degrees.innerHTML = "";
         msg.hidden = false;
         msg.innerHTML = "Informe o valor em radianos.";
@@ -282,4 +294,39 @@ function calcTriangle(){
         pc.innerHTML = "";
         msg.hidden = false;
     }
+}
+
+function getTrigonometry(){
+
+    // Obtém o ângulo.
+    const value = document.getElementById("d2t_degrees").value;
+
+    // Abre o <details> e obtém as div's para inserir os resultados.
+    document.getElementById("deg_to_tri_result").open = true;
+    const sin = document.getElementById("deg_to_tri_sin");
+    const cos = document.getElementById("deg_to_tri_cos");
+    const tan = document.getElementById("deg_to_tri_tan");
+    const msg = document.getElementById("deg_to_tri_msg");
+
+    if (value === ""){
+        document.getElementById("deg_to_tri_result").open = false;
+        sin.innerHTML = "";
+        tan.innerHTML = "";
+        cos.innerHTML = "";
+        msg.hidden = false;
+        msg.innerHTML = "Por favor, informe o ângulo em graus."
+        return;
+    }
+
+    angle = parseInt(value);
+
+    sin.innerHTML = "Seno: ";
+    cos.innerHTML = "Cos: ";
+    tan.innerHTML = "Tan: ";
+
+    sin.innerHTML += degreesToSin(angle);
+    cos.innerHTML += degreesToCos(angle);
+    tan.innerHTML += degreesToTan(angle);
+
+    msg.hidden = true;
 }

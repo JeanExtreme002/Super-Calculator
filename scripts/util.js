@@ -72,11 +72,14 @@ function getMult(x, y){
         result += "0".repeat(cont)
 
         // Adiciona valores para somar.
-        if (result != 0){
+        if (result != 0 || (x.length == 1 && y.length == 1) || (x == 0 && y == 0)){
             values.push(parseInt(result));
         }
 
-        text += cont == 0 ? result + "<br>" : "+ " + result + "<br>";
+        if (y.length > 1){
+            text += cont == 0 ? result + "<br>" : "+ " + result + "<br>";
+        }
+
         cont ++;
     }
 
@@ -87,8 +90,13 @@ function getMult(x, y){
 
     // Insere o ponto flutuante se necessário.
     result /= 10 ** p_pos;
-    text += `${"-".repeat(values[values.length - 1].toString().length)}-------------<br> ${result}`;
 
+
+    if (y.length > 1){
+        text += `${"-".repeat(values[values.length - 1].toString().length)}-------------<br> ${result}`;
+    }else{
+        text += result;
+    }
     return [text, result];
 }
 
@@ -103,4 +111,19 @@ function radiansToDegrees(radians){
     text += `D = ${radians * (180 / Math.PI)}`;
 
     return [text, radians * (180 / Math.PI)];
+}
+
+
+function degreesToSin(angle){
+    return Math.sin(angle * Math.PI / 180);
+}
+
+
+function degreesToCos(angle){
+    return Math.cos(angle * Math.PI / 180);
+}
+
+
+function degreesToTan(angle){
+    return Math.tan(angle * Math.PI / 180);
 }
