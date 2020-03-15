@@ -5,11 +5,11 @@
         <meta name="author" content="Jean Loui Bernard Silva de Jesus"/>
         <title>Super Calculadora</title>
 
-        <link rel="stylesheet" type="text/css" href="./style/style.css"/>
         <script type="text/javascript" src="./scripts/bhaskara_calc.js"></script>
         <script type="text/javascript" src="./scripts/combinatorial_calc.js"></script>
         <script type="text/javascript" src="./scripts/progression_calc.js"></script>
         <script type="text/javascript" src="./scripts/rect_triangle_calc.js"></script>
+        <script type="text/javascript" src="./scripts/temperature_calc.js"></script>
         <script type="text/javascript" src="./scripts/util.js"></script>
         <script type="text/javascript" src="./scripts/btn_func.js"></script>
     
@@ -17,6 +17,8 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="./style/style.css"/>
     </head>
 
     <body style="margin: 50px;">
@@ -64,6 +66,11 @@
             <li>
                 <a href="#rad_to_degrees">
                     Converta um valor de radianos para graus
+                </a>
+            </li>
+            <li>
+                <a href="#cv_temp">
+                    Converta temperaturas para Celsius, Fahrenheit ou Kelvin
                 </a>
             </li>
             <li>
@@ -214,7 +221,33 @@
 
         <hr>
 
-        <!-- Conversão de radianos para graus-->
+        <!-- Conversão de temperatura -->
+
+        <h2 id="cv_temp">Converter Temperatura:</h2>
+        <input id="temperature" type="number" placeholder="Temperatura"/>
+        
+        <select id="cv_temp_sel">
+            <option value="cel_to_fah" selected>Celsius > Fahrenheit</option>
+            <option value="cel_to_kel">Celsius > Kelvin</option>
+            <option value="fah_to_cel">Fahrenheit > Celsius</option>
+            <option value="fah_to_kel">Fahrenheit > Kelvin</option>
+            <option value="kel_to_cel">Kelvin > Celsius</option>
+            <option value="kel_to_fah">Kelvin > Fahrenheit</option>
+        </select>
+        
+        <button onclick="calcTemperature();">Calcular</button>
+
+        <details id="cv_temp_result" class="calc_area">
+            <summary>Resultado:</summary>
+            <br/>
+            <div class="calc" id="cv_temp_calc"></div>
+        </details>
+
+        <div class="alert alert-danger" id="cv_temp_msg" hidden></div> 
+
+        <hr>
+
+        <!-- Conversão de radianos para graus -->
 
         <h2 id="rad_to_degrees">Converter Radianos para Graus:</h2>
 
@@ -229,6 +262,10 @@
 
         <div class="alert alert-danger" id="rad_to_degrees_msg" hidden></div>
 
+        <hr>
+
+        <!-- Obter razões trigonométricas -->
+
         <h2 id="deg_to_tri">Obter Razões Trigonométricas:</h2>
         <input id="d2t_degrees" type="number" min="0" max="90" placeholder="Ângulo (Graus)" />
         <button onclick="getTrigonometry();">Obter</button>
@@ -241,6 +278,6 @@
             <div class="calc" id="deg_to_tri_tan"></div>
         </details>
 
-        <div class="alert alert-danger" id="deg_to_tri_msg" hidden></div>   
+        <div class="alert alert-danger" id="deg_to_tri_msg" hidden></div>    
     </body>
 </html>

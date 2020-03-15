@@ -11,6 +11,14 @@ input{
     width: 200px;
 }
 
+select{
+    color: rgb(117, 117, 117);
+    height: 30px;
+    font-family: Arial;
+    font-size: 14px;
+    width: 200px;
+}
+
 li{
     font-size: 20px;
 }

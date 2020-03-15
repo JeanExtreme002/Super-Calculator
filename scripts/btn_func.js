@@ -201,7 +201,7 @@ function calcRadiansToDegrees(){
     degrees.innerHTML = "Graus:<br><br>";
 
     if (value !== ""){
-        value = parseFloat(value)
+        value = parseFloat(value);
         msg.hidden = true;
         degrees.innerHTML += radiansToDegrees(value)[0];
 
@@ -210,6 +210,42 @@ function calcRadiansToDegrees(){
         degrees.innerHTML = "";
         msg.hidden = false;
         msg.innerHTML = "Informe o valor em radianos.";
+    }
+}
+
+
+function calcTemperature(){
+
+    // Obtém o valor em radianos
+    var value = document.getElementById("temperature").value;
+    var option = document.getElementById("cv_temp_sel").value;
+
+    // Abre o <details> e obtém as div's para inserir os resultados.
+    document.getElementById("cv_temp_result").open = true;
+    const temp = document.getElementById("cv_temp_calc");
+    const msg = document.getElementById("cv_temp_msg");
+
+    const functions = {
+        cel_to_fah: [cel_to_fah, "Fahrenheit"],
+        cel_to_kel: [cel_to_kel, "Kelvin"],
+        fah_to_cel: [fah_to_cel, "Celsius"],
+        fah_to_kel: [fah_to_kel, "Kelvin"],
+        kel_to_cel: [kel_to_cel, "Celsius"],
+        kel_to_fah: [kel_to_fah, "Fahrenheit"],
+    }
+
+    temp.innerHTML = `Temperatura em ${functions[option][1]}:<br><br>`;
+
+    if (value !== ""){
+        value = parseFloat(value);
+        msg.hidden = true;
+        temp.innerHTML += functions[option][0](value)[0];
+
+    }else{
+        document.getElementById("cv_temp_result").open = false;
+        temp.innerHTML = "";
+        msg.hidden = false;
+        msg.innerHTML = "Informe a temperatura.";
     }
 }
 
